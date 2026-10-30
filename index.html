@@ -1,0 +1,489 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>THE MEDI 클리닉</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap">
+<style>
+/* Layout concept: 호텔 로비처럼 넓은 여백, 네이비 밤하늘 위에 가는 골드 선. 섹션은 네이비와 아이보리가 번갈아 흐른다. */
+:root{
+  --navy-900:#0B1220;
+  --navy-800:#0F172A;
+  --navy-700:#1E293B;
+  --navy-600:#2B3A52;
+  --gold:#C8A45D;
+  --gold-soft:#E3CFA0;
+  --ivory:#F6F2EA;
+  --ivory-2:#ECE6DA;
+  --ink:#1B2333;
+  --mute-dark:#9AA6BA;
+  --mute-light:#5C6577;
+  --serif:"Noto Serif KR","Cormorant Garamond",serif;
+  --display:"Cormorant Garamond","Noto Serif KR",serif;
+  --sans:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy-800);color:#E8ECF4;font-family:var(--sans);font-weight:300;line-height:1.8;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;font-size:16px;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy-900)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:300;text-wrap:balance;line-height:1.35}
+.wrap{max-width:1180px;margin:0 auto}
+.band{margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.eyebrow{font-family:var(--display);letter-spacing:.32em;text-transform:uppercase;font-size:.78rem;color:var(--gold);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border:1px solid var(--gold);color:var(--gold-soft);font-size:.92rem;letter-spacing:.12em;transition:background .4s,color .4s;background:transparent;cursor:pointer;font-family:var(--sans)}
+.btn:hover{background:var(--gold);color:var(--navy-900)}
+.btn.solid{background:var(--gold);color:var(--navy-900);font-weight:500}
+.btn.solid:hover{background:var(--gold-soft)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,18,32,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,164,93,.18)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--display);font-weight:500;font-size:1.65rem;letter-spacing:.34em;color:#fff}
+.logo span{font-size:.62rem;letter-spacing:.5em;color:var(--gold);margin-top:6px;padding-left:2px}
+nav ul{display:flex;gap:44px;list-style:none;margin:0;padding:0;font-size:.9rem;letter-spacing:.08em}
+nav a{color:#C6CEDC;transition:color .3s;padding:6px 0;border-bottom:1px solid transparent}
+nav a:hover{color:var(--gold-soft);border-color:var(--gold)}
+.nav .btn{padding:10px 22px;font-size:.82rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;color:#fff}
+.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:1px;background:currentColor;position:relative;margin:auto}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--navy-900);isolation:isolate}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(88px,14vw,170px) clamp(80px,11vw,130px)}
+.hero-bg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(60% 70% at 78% 30%,rgba(200,164,93,.22),transparent 62%),
+  radial-gradient(50% 60% at 12% 90%,rgba(43,58,82,.9),transparent 70%),
+  linear-gradient(180deg,#0B1220,#0F172A 60%,#131C30)}
+.hero-bg::before,.hero-bg::after{content:"";position:absolute;width:140%;height:70%;left:-20%;border-radius:50%;border:1px solid rgba(200,164,93,.16)}
+.hero-bg::before,.hero-bg::after{display:none}
+@keyframes drift{from{transform:translateX(-3%) rotate(-1.5deg)}to{transform:translateX(3%) rotate(1.5deg)}}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:0}
+.hero-bg .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,18,32,.5) 0%,rgba(11,18,32,.2) 55%,rgba(11,18,32,.08) 100%),linear-gradient(180deg,rgba(11,18,32,.18) 0%,rgba(11,18,32,.04) 45%,rgba(11,18,32,.5) 100%)}
+.hero h1,.hero p.lead,.hero-meta{text-shadow:0 2px 22px rgba(0,0,0,.55)}
+.hero{min-height:clamp(640px,92svh,920px);display:flex;flex-direction:column;justify-content:center}
+.hero .wrap{width:100%}
+.hero-bg::before,.hero-bg::after,.hero-bg .glow{z-index:1}
+.hero-bg .glow{display:none}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.75}}
+.hero h1{font-size:clamp(2.1rem,5.4vw,4.2rem);margin:28px 0 28px;max-width:15em;color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold-soft)}
+.hero p.lead{max-width:34em;color:#B9C3D6;font-size:1.02rem}
+.hero .actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:48px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 44px;margin-top:84px;padding-top:28px;border-top:1px solid rgba(200,164,93,.22);font-size:.84rem;color:var(--mute-dark);letter-spacing:.06em}
+.hero-meta b{display:block;font-family:var(--display);font-weight:500;font-size:1.5rem;color:var(--gold-soft);letter-spacing:.04em;line-height:1.3}
+
+section{padding-block:clamp(80px,11vw,150px)}
+.light{background:var(--ivory);color:var(--ink)}
+.light .eyebrow{color:#9A7A36}.light .eyebrow::before{background:#9A7A36}
+.sec-title{font-size:clamp(1.7rem,3.6vw,2.8rem);margin-top:22px}
+
+/* about */
+.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,8vw,120px);align-items:start}
+.about > *{min-width:0}
+.about p{color:var(--mute-light);margin-top:26px;max-width:34em}
+.principles{display:grid;gap:0;margin-top:0}
+.principle{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;padding:30px 0;border-top:1px solid rgba(27,35,51,.16)}
+.principle:last-child{border-bottom:1px solid rgba(27,35,51,.16)}
+.principle h3{font-size:1.25rem;font-weight:400;color:var(--ink)}
+.principle p{margin:0;grid-column:2;font-size:.95rem}
+.principle .ico{grid-row:span 2;width:40px;height:40px;color:#9A7A36}
+
+/* services */
+.services{background:var(--navy-800)}
+.head-row{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:64px}
+.head-row p{max-width:26em;color:var(--mute-dark);font-size:.95rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{position:relative;padding:46px 36px 40px;background:linear-gradient(180deg,var(--navy-700),#17213A);border:1px solid rgba(200,164,93,.14);overflow:hidden;transition:transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s,box-shadow .6s;min-width:0}
+.card::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-10px);border-color:rgba(200,164,93,.5);box-shadow:0 30px 60px -28px rgba(0,0,0,.7)}
+.card:hover::after{width:100%}
+.card .idx{font-family:var(--display);font-size:.8rem;letter-spacing:.3em;color:var(--gold)}
+.card svg{width:46px;height:46px;color:var(--gold-soft);margin:26px 0 24px;display:block}
+.card h3{font-size:1.45rem;color:#fff;font-weight:400}
+.card .en{font-family:var(--display);letter-spacing:.18em;font-size:.76rem;color:var(--mute-dark);text-transform:uppercase;margin:6px 0 20px}
+.card ul{list-style:none;padding:0;margin:0;color:#B9C3D6;font-size:.93rem}
+.card li{padding:9px 0;border-top:1px solid rgba(255,255,255,.07);display:flex;gap:12px;align-items:center}
+.card li::before{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex:none}
+
+/* why */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px;border-top:1px solid rgba(27,35,51,.18)}
+.why{padding:36px 28px 8px 0;min-width:0}
+.why + .why{padding-left:28px;border-left:1px solid rgba(27,35,51,.14)}
+.why .n{font-family:var(--display);font-size:3rem;font-weight:400;color:#B99449;line-height:1}
+.why h3{font-size:1.15rem;font-weight:600;margin:18px 0 10px;color:var(--ink)}
+.why p{color:var(--mute-light);font-size:.92rem}
+
+/* team */
+.team{background:var(--navy-900)}
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.doc{min-width:0;background:var(--navy-800);border:1px solid rgba(200,164,93,.12);transition:border-color .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
+.doc:hover{border-color:rgba(200,164,93,.45);transform:translateY(-6px)}
+.portrait{aspect-ratio:4/4.4;position:relative;overflow:hidden;background:radial-gradient(80% 70% at 50% 28%,#34445F,#1A2438 70%)}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.portrait .tag{position:absolute;top:16px;left:16px;font-size:.7rem;letter-spacing:.22em;color:var(--gold-soft);border:1px solid rgba(200,164,93,.4);padding:4px 10px;font-family:var(--display);text-transform:uppercase}
+.portrait .ph{position:absolute;bottom:12px;right:14px;font-size:.66rem;color:rgba(255,255,255,.35);letter-spacing:.1em}
+.doc-body{padding:30px 30px 34px}
+.doc-body .role{font-size:.78rem;letter-spacing:.18em;color:var(--gold)}
+.doc-body h3{font-size:1.5rem;color:#fff;margin:8px 0 18px;font-weight:400}
+.doc-body h3 small{font-size:.9rem;color:var(--mute-dark);font-family:var(--sans);margin-left:6px}
+.doc-body ul{list-style:none;margin:0 0 22px;padding:0;color:#B9C3D6;font-size:.88rem}
+.doc-body li{padding:4px 0}
+.doc-body q{display:block;font-family:var(--serif);font-size:.98rem;color:var(--gold-soft);quotes:none;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-weight:300;line-height:1.7}
+
+/* reserve */
+.reserve-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,100px)}
+.reserve-grid > *{min-width:0}
+.info dl{margin:44px 0 0;display:grid;gap:0}
+.info .row{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:18px 0;border-top:1px solid rgba(27,35,51,.15);font-size:.95rem}
+.info .row:last-child{border-bottom:1px solid rgba(27,35,51,.15)}
+.info dt{color:#9A7A36;letter-spacing:.1em;font-size:.82rem;padding-top:2px}
+.info dd{margin:0;color:var(--ink)}
+.info dd span{display:block;color:var(--mute-light);font-size:.86rem}
+.info .closed{color:#8A5A3A}
+.route{margin-top:34px;padding:22px 24px;background:var(--ivory-2);font-size:.9rem;color:var(--mute-light)}
+.route b{color:var(--ink);font-weight:500}
+form{background:var(--navy-800);color:#E8ECF4;padding:clamp(28px,4vw,52px);display:grid;gap:22px}
+form h3{font-size:1.5rem;color:#fff;font-weight:400}
+form .sub{color:var(--mute-dark);font-size:.88rem;margin-top:-10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.two > *{min-width:0}
+label{display:grid;gap:8px;font-size:.78rem;letter-spacing:.14em;color:var(--gold-soft)}
+input,select,textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.25);color:#fff;font:inherit;font-size:.98rem;padding:10px 0;border-radius:0;transition:border-color .3s}
+select option{background:var(--navy-800);color:#fff}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.3)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold)}
+textarea{resize:vertical;min-height:84px}
+.agree{display:flex;gap:12px;align-items:flex-start;font-size:.8rem;letter-spacing:0;color:var(--mute-dark);line-height:1.6}
+.agree input{width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex:none}
+.msg{display:none;padding:18px 20px;border:1px solid var(--gold);color:var(--gold-soft);font-size:.92rem}
+.msg.on{display:block}
+.err{color:#E9A48B;font-size:.82rem;min-height:1em}
+
+/* footer */
+footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid rgba(200,164,93,.2);font-size:.82rem;color:var(--mute-dark)}
+.foot{display:grid;grid-template-columns:1.2fr 2fr;gap:40px}
+.foot > *{min-width:0}
+.foot .biz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 28px;line-height:1.9}
+.foot .biz b{color:#C6CEDC;font-weight:400;margin-right:8px}
+.copy{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;letter-spacing:.06em}
+.notice{max-width:60em;margin-top:16px;line-height:1.7;opacity:.7}
+
+/* responsive */
+@media (max-width:980px){
+  .cards,.docs{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .why:nth-child(3){padding-left:0;border-left:0}
+  .why:nth-child(n+3){border-top:1px solid rgba(27,35,51,.14);margin-top:28px}
+  .about,.reserve-grid,.foot{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  nav{position:absolute;left:0;right:0;top:100%;background:var(--navy-900);border-bottom:1px solid rgba(200,164,93,.2);display:none;padding:12px max(16px,env(safe-area-inset-left,0px)) 28px}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0}
+  nav a{display:block;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .burger{display:block}
+  .nav .btn{display:none}
+}
+@media (max-width:640px){
+  .cards,.docs,.why-grid,.two{grid-template-columns:1fr}
+  .why,.why + .why{padding:28px 0;border-left:0;margin:0!important;border-top:1px solid rgba(27,35,51,.14)}
+  .why-grid{border-top:0}
+  .why:first-child{border-top:0}
+  .info .row{grid-template-columns:84px 1fr}
+  .foot .biz{grid-template-columns:1fr}
+  .hero-meta{margin-top:56px}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="band">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="THE MEDI 클리닉 홈"><b>THE MEDI</b><span>CLINIC</span></a>
+    <nav id="gnb" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#about">병원 소개</a></li>
+        <li><a href="#team">의료진</a></li>
+        <li><a href="#services">진료 안내</a></li>
+        <li><a href="#visit">오시는 길</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#reserve">빠른 예약 · 상담</a>
+    <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="gnb"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero band">
+    <div class="hero-bg" aria-hidden="true">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" tabindex="-1"><source src="hero.mp4" type="video/mp4"></video>
+      <div class="veil"></div>
+      <div class="glow"></div>
+    </div>
+    <div class="wrap">
+      <div class="eyebrow">Private Medical Residence</div>
+      <h1>당신의 품격에 맞는<br><em>차원이 다른</em> 의료 서비스</h1>
+      <p class="lead">한 분 한 분께 충분한 시간을 드립니다. 필요한 검사와 치료만 권하고, 결과는 이해하실 때까지 설명합니다. 더메디 클리닉은 100% 예약제 프라이빗 진료로 운영됩니다.</p>
+      <div class="actions">
+        <a class="btn solid" href="#reserve">프라이빗 진료 예약</a>
+        <a class="btn" href="#services">진료 안내 보기</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>1 : 1</b>전담 의료진 진료</div>
+        <div><b>60분</b>초진 상담 시간</div>
+        <div><b>100%</b>예약제 · 대기 없음</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="light band">
+    <div class="wrap about">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2 class="sec-title">덜어내고,<br>정확하게 봅니다</h2>
+        <p>좋은 병원은 많은 것을 권하는 곳이 아니라 필요한 것을 정확히 가려내는 곳이라고 생각합니다. 더메디 클리닉은 진료실의 시간과 공간을 넉넉하게 두고, 설명과 선택을 환자분께 돌려드립니다.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="20" cy="20" r="15"/><path d="M12 20.5l5.5 5.5L28 14.5"/></svg>
+          <h3>과잉 진료 없는 원칙</h3>
+          <p>의학적 근거가 있는 검사와 시술만 권합니다. 하지 않아도 되는 치료는 하지 않는다고 분명히 말씀드립니다.</p>
+        </div>
+        <div class="principle">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="9" width="26" height="22" rx="1"/><path d="M7 16h26M14 5v8M26 5v8"/></svg>
+          <h3>충분히 머무는 진료 시간</h3>
+          <p>진료 사이에 여유를 두어 서두르지 않습니다. 증상과 생활 습관, 걱정되는 점까지 충분히 듣습니다.</p>
+        </div>
+        <div class="principle">
+          <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 5l12 5v9c0 8-5 13-12 16C13 32 8 27 8 19v-9z"/><path d="M15 19h10M20 14v10"/></svg>
+          <h3>철저한 프라이버시</h3>
+          <p>독립된 진료 동선과 개별 상담실에서 다른 환자분과 마주치지 않고 진료받으실 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services band">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="eyebrow">Signature Services</div>
+          <h2 class="sec-title">세 개의 센터,<br>하나의 진료 철학</h2>
+        </div>
+        <p>각 센터는 전문의 중심으로 운영되며, 필요하면 센터 간 협진으로 한 번에 상담받으실 수 있습니다.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="idx">CENTER · I</div>
+          <svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M17 5c-3 3 0 6 2 8 2 3 1 6 0 9s-1 7 2 9c-1 3-4 4-5 7M29 5c3 3 0 6-2 8-2 3-1 6 0 9s1 7-2 9c1 3 4 4 5 7"/><circle cx="23" cy="23" r="4"/></svg>
+          <h3>정형외과 · 관절 센터</h3>
+          <div class="en">Orthopedics &amp; Joint</div>
+          <ul>
+            <li>무릎 · 어깨 관절 정밀 진단</li>
+            <li>비수술 통증 · 재생 치료</li>
+            <li>도수 · 체외충격파 재활</li>
+            <li>스포츠 손상 프로그램</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="idx">CENTER · II</div>
+          <svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M23 40S6 30 6 17a8.5 8.5 0 0117-2 8.5 8.5 0 0117 2c0 13-17 23-17 23z"/><path d="M10 24h7l3-6 4 11 3-5h9"/></svg>
+          <h3>내과 · 건강검진 센터</h3>
+          <div class="en">Internal Medicine &amp; Check-up</div>
+          <ul>
+            <li>1인 프리미엄 종합 검진</li>
+            <li>심혈관 · 뇌혈관 정밀 검사</li>
+            <li>소화기 내시경 (수면)</li>
+            <li>결과 상담 · 연간 건강 설계</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="idx">CENTER · III</div>
+          <svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M23 5c7 8 11 13 11 20a11 11 0 01-22 0c0-7 4-12 11-20z"/><path d="M17 27a6 6 0 006 6"/></svg>
+          <h3>안티에이징 · 피부 센터</h3>
+          <div class="en">Anti-aging &amp; Dermatology</div>
+          <ul>
+            <li>피부 상태 정밀 분석</li>
+            <li>리프팅 · 탄력 케어</li>
+            <li>색소 · 홍조 · 흉터 치료</li>
+            <li>개인 맞춤 장기 관리 플랜</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="light band" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="eyebrow">Why THE MEDI</div>
+      <h2 class="sec-title" id="why-h">더메디가 다른 이유</h2>
+      <div class="why-grid">
+        <div class="why"><div class="n">I</div><h3>전문의 직접 진료</h3><p>초진부터 사후 관리까지 같은 전문의가 맡습니다. 진료 중 담당의가 바뀌지 않습니다.</p></div>
+        <div class="why"><div class="n">II</div><h3>검증된 장비만 도입</h3><p>임상 근거가 확인된 장비만 선별해 사용하고, 사용 목적과 한계를 미리 설명드립니다.</p></div>
+        <div class="why"><div class="n">III</div><h3>호텔 수준의 공간</h3><p>조용한 대기 라운지와 독립 진료실, 개별 탈의 공간을 갖춘 프라이빗 동선입니다.</p></div>
+        <div class="why"><div class="n">IV</div><h3>사후 케어 시스템</h3><p>진료 후 경과를 확인하는 연락과 재진 일정까지 챙기는 1:1 케어 코디네이터가 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="team band">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="eyebrow">Medical Team</div>
+          <h2 class="sec-title">환자분 곁의 전문의</h2>
+        </div>
+        <p>각 분야 전문의가 진료 철학을 가지고 직접 진료합니다. 아래 프로필은 예시이며 실제 의료진 정보로 교체해 사용하세요.</p>
+      </div>
+      <div class="docs">
+        <article class="doc">
+          <div class="portrait">
+            <span class="tag">Orthopedics</span>
+            <img src="doc-kim.jpg" alt="김도윤 원장" loading="lazy" style="object-position:center 14%">
+          </div>
+          <div class="doc-body">
+            <div class="role">정형외과 · 관절 센터 대표원장</div>
+            <h3>김도윤 <small>원장</small></h3>
+            <ul>
+              <li>정형외과 전문의</li>
+              <li>대학병원 관절센터 임상교수 역임</li>
+              <li>대한정형외과학회 정회원</li>
+            </ul>
+            <q>가장 좋은 수술은 하지 않아도 되는 수술이라고 믿습니다.</q>
+          </div>
+        </article>
+        <article class="doc">
+          <div class="portrait">
+            <span class="tag">Internal Med.</span>
+            <img src="doc-lee.jpg" alt="이서연 원장" loading="lazy" style="object-position:center 16%">
+          </div>
+          <div class="doc-body">
+            <div class="role">내과 · 건강검진 센터 센터장</div>
+            <h3>이서연 <small>원장</small></h3>
+            <ul>
+              <li>내과 전문의 · 소화기내시경 세부전문의</li>
+              <li>종합병원 건강증진센터 과장 역임</li>
+              <li>대한내과학회 정회원</li>
+            </ul>
+            <q>숫자 하나보다 그 사람의 일상을 먼저 묻는 검진을 합니다.</q>
+          </div>
+        </article>
+        <article class="doc">
+          <div class="portrait">
+            <span class="tag">Dermatology</span>
+            <img src="doc-park.jpg" alt="박지훈 원장" loading="lazy" style="object-position:center 14%">
+          </div>
+          <div class="doc-body">
+            <div class="role">안티에이징 · 피부 센터 원장</div>
+            <h3>박지훈 <small>원장</small></h3>
+            <ul>
+              <li>피부과 전문의</li>
+              <li>대학병원 피부과 외래교수 역임</li>
+              <li>대한피부과학회 정회원</li>
+            </ul>
+            <q>자연스러움이 가장 오래가는 아름다움입니다.</q>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve" class="light band">
+    <div class="wrap reserve-grid">
+      <div class="info" id="visit">
+        <div class="eyebrow">Reservation &amp; Visit</div>
+        <h2 class="sec-title">예약 안내와<br>오시는 길</h2>
+        <dl>
+          <div class="row"><dt>진료 시간</dt><dd>평일 09:30 – 18:30<span>목요일 야간 진료 ~20:30 (예약제)</span></dd></div>
+          <div class="row"><dt>토요일</dt><dd>09:30 – 14:00</dd></div>
+          <div class="row"><dt>휴진</dt><dd class="closed">일요일 · 공휴일</dd></div>
+          <div class="row"><dt>점심시간</dt><dd>13:00 – 14:00<span>점심시간에도 예약 상담은 가능합니다</span></dd></div>
+          <div class="row"><dt>대표 전화</dt><dd>02-0000-0000</dd></div>
+          <div class="row"><dt>주소</dt><dd>서울특별시 강남구 도산대로 000, 더메디타워 3 · 4층<span>지하 주차 2시간 무료 · 발레파킹 지원</span></dd></div>
+        </dl>
+        <div class="route"><b>지하철</b> 신분당선 · 3호선 역 도보 5분, 3번 출구 직진 후 첫 번째 건물입니다.</div>
+      </div>
+      <form id="rsv" novalidate aria-labelledby="rsv-h">
+        <h3 id="rsv-h">간편 예약 문의</h3>
+        <p class="sub">남겨주신 연락처로 담당 코디네이터가 영업일 기준 24시간 안에 연락드립니다.</p>
+        <div class="two">
+          <label for="f-name">성함<input id="f-name" name="name" type="text" autocomplete="name" placeholder="홍길동" required></label>
+          <label for="f-tel">연락처<input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000" required></label>
+        </div>
+        <div class="two">
+          <label for="f-center">관심 진료
+            <select id="f-center" name="center">
+              <option>정형외과 · 관절 센터</option>
+              <option>내과 · 건강검진 센터</option>
+              <option>안티에이징 · 피부 센터</option>
+              <option>아직 정하지 못했어요</option>
+            </select>
+          </label>
+          <label for="f-date">희망 일자<input id="f-date" name="date" type="date"></label>
+        </div>
+        <label for="f-memo">문의 내용<textarea id="f-memo" name="memo" placeholder="증상이나 궁금한 점을 편하게 남겨주세요."></textarea></label>
+        <label class="agree" for="f-agree"><input id="f-agree" type="checkbox" required><span>개인정보 수집 및 이용에 동의합니다. (성함, 연락처 · 상담 및 예약 확인 목적 · 상담 종료 후 파기)</span></label>
+        <div class="err" id="err" role="alert"></div>
+        <button class="btn solid" type="submit">예약 상담 신청</button>
+        <div class="msg" id="ok" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <div class="foot">
+      <div class="logo"><b>THE MEDI</b><span>CLINIC</span></div>
+      <div class="biz">
+        <div><b>상호</b>더메디 의원</div>
+        <div><b>대표</b>김도윤</div>
+        <div><b>사업자등록번호</b>000-00-00000</div>
+        <div><b>의료기관 개설</b>제 0000-00호</div>
+        <div><b>주소</b>서울특별시 강남구 도산대로 000</div>
+        <div><b>전화</b>02-0000-0000</div>
+      </div>
+    </div>
+    <p class="notice">본 페이지의 진료 정보는 일반적인 안내이며 개인별 진단과 치료는 진료 후 전문의가 결정합니다. 시술과 치료 결과는 개인에 따라 다를 수 있습니다.</p>
+    <div class="copy"><span>© 2026 THE MEDI CLINIC. All rights reserved.</span><span>개인정보처리방침 · 이용약관</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hv=document.getElementById('heroVideo');
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){hv.removeAttribute('autoplay');hv.pause()}
+    else{var p=hv.play();if(p&&p.catch)p.catch(function(){})}
+  }catch(e){}
+  var b=document.getElementById('burger'),n=document.getElementById('gnb');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기')});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+  var f=document.getElementById('rsv'),err=document.getElementById('err'),ok=document.getElementById('ok');
+  var d=document.getElementById('f-date');
+  try{var t=new Date();t.setDate(t.getDate()+1);d.min=t.toISOString().slice(0,10)}catch(e){}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();ok.classList.remove('on');
+    var name=f.name.value.trim(),tel=f.tel.value.replace(/[^0-9]/g,'');
+    if(!name){err.textContent='성함을 입력해 주세요.';f.name.focus();return}
+    if(tel.length<9||tel.length>11){err.textContent='연락처를 숫자 9~11자리로 입력해 주세요.';f.tel.focus();return}
+    if(!document.getElementById('f-agree').checked){err.textContent='개인정보 수집 및 이용에 동의해 주세요.';return}
+    err.textContent='';
+    ok.textContent=name+'님, 예약 문의 내용이 확인되었습니다. 실제 사이트에서는 이 단계에서 병원 서버로 전송됩니다.';
+    ok.classList.add('on');f.reset();
+  });
+})();
+</script>
+
+</body></html>
