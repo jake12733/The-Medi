@@ -4,7 +4,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap">
 <style>
-/* Layout concept: 호텔 로비처럼 넓은 여백, 네이비 밤하늘 위에 가는 골드 선. 섹션은 네이비와 아이보리가 번갈아 흐른다. */
 :root{
   --navy-900:#0B1220;
   --navy-800:#0F172A;
@@ -61,13 +60,10 @@ nav a:hover{color:var(--gold-soft);border-color:var(--gold)}
 /* hero */
 .hero{position:relative;overflow:hidden;background:var(--navy-900);isolation:isolate}
 .hero .wrap{position:relative;z-index:2;padding-block:clamp(88px,14vw,170px) clamp(80px,11vw,130px)}
-.hero-bg{position:absolute;inset:0;z-index:0;background:
-  radial-gradient(60% 70% at 78% 30%,rgba(200,164,93,.22),transparent 62%),
-  radial-gradient(50% 60% at 12% 90%,rgba(43,58,82,.9),transparent 70%),
-  linear-gradient(180deg,#0B1220,#0F172A 60%,#131C30)}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;z-index:0}
-.hero-bg .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,18,32,.75) 0%,rgba(11,18,32,.4) 55%,rgba(11,18,32,.2) 100%),linear-gradient(180deg,rgba(11,18,32,.3) 0%,rgba(11,18,32,.1) 45%,rgba(11,18,32,.7) 100%)}
-.hero h1,.hero p.lead,.hero-meta{text-shadow:0 2px 22px rgba(0,0,0,.55)}
+.hero-bg{position:absolute;inset:0;z-index:0;background:#0B1220}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.65;z-index:0}
+.hero-bg .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,18,32,.85) 0%,rgba(11,18,32,.55) 55%,rgba(11,18,32,.35) 100%),linear-gradient(180deg,rgba(11,18,32,.4) 0%,rgba(11,18,32,.2) 45%,rgba(11,18,32,.75) 100%)}
+.hero h1,.hero p.lead,.hero-meta{text-shadow:0 2px 22px rgba(0,0,0,.65)}
 .hero{min-height:clamp(640px,92svh,920px);display:flex;flex-direction:column;justify-content:center}
 .hero .wrap{width:100%}
 .hero h1{font-size:clamp(2.1rem,5.4vw,4.2rem);margin:28px 0 28px;max-width:15em;color:#fff}
@@ -118,14 +114,14 @@ section{padding-block:clamp(80px,11vw,150px)}
 .why h3{font-size:1.15rem;font-weight:600;margin:18px 0 10px;color:var(--ink)}
 .why p{color:var(--mute-light);font-size:.92rem}
 
-/* team */
+/* team - 의료진 사진 비율 및 잘림 방지 스타일 최적화 */
 .team{background:var(--navy-900)}
 .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .doc{min-width:0;background:var(--navy-800);border:1px solid rgba(200,164,93,.12);transition:border-color .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
 .doc:hover{border-color:rgba(200,164,93,.45);transform:translateY(-6px)}
-.portrait{aspect-ratio:4/4.4;position:relative;overflow:hidden;background:radial-gradient(80% 70% at 50% 28%,#34445F,#1A2438 70%)}
-.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.portrait .tag{position:absolute;top:16px;left:16px;font-size:.7rem;letter-spacing:.22em;color:var(--gold-soft);border:1px solid rgba(200,164,93,.4);padding:4px 10px;font-family:var(--display);text-transform:uppercase;z-index:2}
+.portrait{aspect-ratio:4/4.8;position:relative;overflow:hidden;background:#131C30}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.portrait .tag{position:absolute;top:16px;left:16px;font-size:.7rem;letter-spacing:.22em;color:var(--gold-soft);border:1px solid rgba(200,164,93,.4);padding:4px 10px;font-family:var(--display);text-transform:uppercase;z-index:2;background:rgba(11,18,32,.6);backdrop-filter:blur(4px)}
 .doc-body{padding:30px 30px 34px}
 .doc-body .role{font-size:.78rem;letter-spacing:.18em;color:var(--gold)}
 .doc-body h3{font-size:1.5rem;color:#fff;margin:8px 0 18px;font-weight:400}
@@ -332,7 +328,7 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
     </div>
   </section>
 
-  <!-- 의료진 프로필 사진 3장 영역 -->
+  <!-- 의료진 프로필 사진 영역 (올려주신 사진 3장 정확히 매칭) -->
   <section id="team" class="team band">
     <div class="wrap">
       <div class="head-row">
@@ -343,11 +339,10 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
         <p>각 분야 전문의가 진료 철학을 가지고 직접 진료합니다.</p>
       </div>
       <div class="docs">
-        <!-- 1번 의사: pexels-kooldark-14438785.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Orthopedics</span>
-            <img src="pexels-kooldark-14438785.jpg" alt="김도윤 원장" loading="lazy" style="object-position:center 15%">
+            <img src="pexels-kooldark-15962798.jpg" alt="김도윤 원장" loading="lazy">
           </div>
           <div class="doc-body">
             <div class="role">정형외과 · 관절 센터 대표원장</div>
@@ -361,11 +356,10 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
           </div>
         </article>
 
-        <!-- 2번 의사: pexels-pavel-danilyuk-5998465.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Internal Med.</span>
-            <img src="pexels-pavel-danilyuk-5998465.jpg" alt="이서연 원장" loading="lazy" style="object-position:center 15%">
+            <img src="pexels-pavel-danilyuk-5998465.jpg" alt="이서연 원장" loading="lazy">
           </div>
           <div class="doc-body">
             <div class="role">내과 · 건강검진 센터 센터장</div>
@@ -379,11 +373,10 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
           </div>
         </article>
 
-        <!-- 3번 의사: pexels-kooldark-15962798.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Dermatology</span>
-            <img src="pexels-kooldark-15962798.jpg" alt="박지훈 원장" loading="lazy" style="object-position:center 15%">
+            <img src="pexels-kooldark-14438785.jpg" alt="박지훈 원장" loading="lazy">
           </div>
           <div class="doc-body">
             <div class="role">안티에이징 · 피부 센터 원장</div>
