@@ -65,17 +65,11 @@ nav a:hover{color:var(--gold-soft);border-color:var(--gold)}
   radial-gradient(60% 70% at 78% 30%,rgba(200,164,93,.22),transparent 62%),
   radial-gradient(50% 60% at 12% 90%,rgba(43,58,82,.9),transparent 70%),
   linear-gradient(180deg,#0B1220,#0F172A 60%,#131C30)}
-.hero-bg::before,.hero-bg::after{content:"";position:absolute;width:140%;height:70%;left:-20%;border-radius:50%;border:1px solid rgba(200,164,93,.16)}
-.hero-bg::before,.hero-bg::after{display:none}
-@keyframes drift{from{transform:translateX(-3%) rotate(-1.5deg)}to{transform:translateX(3%) rotate(1.5deg)}}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:0}
-.hero-bg .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,18,32,.5) 0%,rgba(11,18,32,.2) 55%,rgba(11,18,32,.08) 100%),linear-gradient(180deg,rgba(11,18,32,.18) 0%,rgba(11,18,32,.04) 45%,rgba(11,18,32,.5) 100%)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;z-index:0}
+.hero-bg .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,18,32,.75) 0%,rgba(11,18,32,.4) 55%,rgba(11,18,32,.2) 100%),linear-gradient(180deg,rgba(11,18,32,.3) 0%,rgba(11,18,32,.1) 45%,rgba(11,18,32,.7) 100%)}
 .hero h1,.hero p.lead,.hero-meta{text-shadow:0 2px 22px rgba(0,0,0,.55)}
 .hero{min-height:clamp(640px,92svh,920px);display:flex;flex-direction:column;justify-content:center}
 .hero .wrap{width:100%}
-.hero-bg::before,.hero-bg::after,.hero-bg .glow{z-index:1}
-.hero-bg .glow{display:none}
-@keyframes breathe{50%{transform:scale(1.08);opacity:.75}}
 .hero h1{font-size:clamp(2.1rem,5.4vw,4.2rem);margin:28px 0 28px;max-width:15em;color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold-soft)}
 .hero p.lead{max-width:34em;color:#B9C3D6;font-size:1.02rem}
@@ -131,8 +125,7 @@ section{padding-block:clamp(80px,11vw,150px)}
 .doc:hover{border-color:rgba(200,164,93,.45);transform:translateY(-6px)}
 .portrait{aspect-ratio:4/4.4;position:relative;overflow:hidden;background:radial-gradient(80% 70% at 50% 28%,#34445F,#1A2438 70%)}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.portrait .tag{position:absolute;top:16px;left:16px;font-size:.7rem;letter-spacing:.22em;color:var(--gold-soft);border:1px solid rgba(200,164,93,.4);padding:4px 10px;font-family:var(--display);text-transform:uppercase}
-.portrait .ph{position:absolute;bottom:12px;right:14px;font-size:.66rem;color:rgba(255,255,255,.35);letter-spacing:.1em}
+.portrait .tag{position:absolute;top:16px;left:16px;font-size:.7rem;letter-spacing:.22em;color:var(--gold-soft);border:1px solid rgba(200,164,93,.4);padding:4px 10px;font-family:var(--display);text-transform:uppercase;z-index:2}
 .doc-body{padding:30px 30px 34px}
 .doc-body .role{font-size:.78rem;letter-spacing:.18em;color:var(--gold)}
 .doc-body h3{font-size:1.5rem;color:#fff;margin:8px 0 18px;font-weight:400}
@@ -225,11 +218,13 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
 </header>
 
 <main id="top">
+  <!-- 히어로 배경 동영상 영역 -->
   <div class="hero band">
     <div class="hero-bg" aria-hidden="true">
-      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" tabindex="-1"><source src="hero.mp4" type="video/mp4"></video>
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" tabindex="-1">
+        <source src="6997941-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
       <div class="veil"></div>
-      <div class="glow"></div>
     </div>
     <div class="wrap">
       <div class="eyebrow">Private Medical Residence</div>
@@ -337,6 +332,7 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
     </div>
   </section>
 
+  <!-- 의료진 프로필 사진 3장 영역 -->
   <section id="team" class="team band">
     <div class="wrap">
       <div class="head-row">
@@ -344,13 +340,14 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
           <div class="eyebrow">Medical Team</div>
           <h2 class="sec-title">환자분 곁의 전문의</h2>
         </div>
-        <p>각 분야 전문의가 진료 철학을 가지고 직접 진료합니다. 아래 프로필은 예시이며 실제 의료진 정보로 교체해 사용하세요.</p>
+        <p>각 분야 전문의가 진료 철학을 가지고 직접 진료합니다.</p>
       </div>
       <div class="docs">
+        <!-- 1번 의사: pexels-kooldark-14438785.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Orthopedics</span>
-            <img src="doc-kim.jpg" alt="김도윤 원장" loading="lazy" style="object-position:center 14%">
+            <img src="pexels-kooldark-14438785.jpg" alt="김도윤 원장" loading="lazy" style="object-position:center 15%">
           </div>
           <div class="doc-body">
             <div class="role">정형외과 · 관절 센터 대표원장</div>
@@ -363,10 +360,12 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
             <q>가장 좋은 수술은 하지 않아도 되는 수술이라고 믿습니다.</q>
           </div>
         </article>
+
+        <!-- 2번 의사: pexels-pavel-danilyuk-5998465.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Internal Med.</span>
-            <img src="doc-lee.jpg" alt="이서연 원장" loading="lazy" style="object-position:center 16%">
+            <img src="pexels-pavel-danilyuk-5998465.jpg" alt="이서연 원장" loading="lazy" style="object-position:center 15%">
           </div>
           <div class="doc-body">
             <div class="role">내과 · 건강검진 센터 센터장</div>
@@ -379,10 +378,12 @@ footer{background:var(--navy-900);padding-block:64px 40px;border-top:1px solid r
             <q>숫자 하나보다 그 사람의 일상을 먼저 묻는 검진을 합니다.</q>
           </div>
         </article>
+
+        <!-- 3번 의사: pexels-kooldark-15962798.jpg -->
         <article class="doc">
           <div class="portrait">
             <span class="tag">Dermatology</span>
-            <img src="doc-park.jpg" alt="박지훈 원장" loading="lazy" style="object-position:center 14%">
+            <img src="pexels-kooldark-15962798.jpg" alt="박지훈 원장" loading="lazy" style="object-position:center 15%">
           </div>
           <div class="doc-body">
             <div class="role">안티에이징 · 피부 센터 원장</div>
